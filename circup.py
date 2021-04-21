@@ -849,7 +849,7 @@ def main(ctx, verbose, path):  # pragma: no cover
 
 
 @main.command()
-@click.option("-r", "--requirement", is_flag=True)
+@click.option("-r", "--requirement", is_flag=True, help="Write output to requirements.txt")
 @click.pass_context
 def freeze(ctx, requirement):  # pragma: no cover
     """
@@ -913,8 +913,8 @@ def list(ctx):  # pragma: no cover
 
 @main.command()
 @click.argument("modules", required=False, nargs=-1)
-@click.option("--py", is_flag=True)
-@click.option("-r", "--requirement")
+@click.option("--py", is_flag=True, help="Install source, rather than mpy")
+@click.option("-r", "--requirement", help="Argument is a requirements.txt file")
 @click.pass_context
 def install(ctx, modules, py, requirement):  # pragma: no cover
     """
@@ -925,7 +925,7 @@ def install(ctx, modules, py, requirement):  # pragma: no cover
     the text file.
 
     TODO: Ensure there's enough space on the device, work out the version of
-    CircuitPytho on the device in order to copy the appropriate .mpy versions
+    CircuitPython on the device in order to copy the appropriate .mpy versions
     too. ;-)
     """
     available_modules = get_bundle_versions()
